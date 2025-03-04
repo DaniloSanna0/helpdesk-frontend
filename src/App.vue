@@ -6,6 +6,9 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item" v-if="!authStore.token">
+              <router-link to="/register" class="nav-link">Registrati</router-link>
+            </li>
+            <li class="nav-item" v-if="!authStore.token">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
             <li class="nav-item" v-if="authStore.token">
