@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
@@ -43,9 +43,27 @@ const authStore = useAuthStore()
 const handleLogin = async () => {
   try {
     await authStore.login(username.value, password.value)
-    router.push('/dashboard') // Reindirizza alla dashboard dopo il login
+
+    // Dopo il login, controlla il ruolo e reindirizza di conseguenza
+    if (authStore.userRole === 'ADMIN') {
+      router.push('/admin')
+    } else {
+      router.push('/dashboard')
+    }
   } catch {
     alert('Login fallito! Controlla le credenziali.')
   }
 }
+
+// Controllo reattivo per assicurarsi che il redirect avvenga
+watch(
+  () => authStore.userRole,
+  (newRole) => {
+    if (newRole === 'ADMIN') {
+      router.push('/admin')
+    } else if (newRole) {
+      router.push('/dashboard')
+    }
+  },
+)
 </script>

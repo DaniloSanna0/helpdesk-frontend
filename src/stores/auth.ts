@@ -1,17 +1,26 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    token: localStorage.getItem('token') || '',
-    userRole: localStorage.getItem('userRole') || '',
+    token: ref(localStorage.getItem('token') || ''),
+    userRole: ref(localStorage.getItem('userRole') || ''),
   }),
   actions: {
     async login(username: string, password: string) {
       try {
         const response = await axios.post('/auth/login', { username, password })
         this.token = response.data.token
-        this.userRole = response.data.role
+
+        // Decodifica il token JWT per ottenere il ruolo
+        const decoded = jwtDecode<{ role: string }>(this.token)
+        this.userRole = decoded.role
+
+        console.log(decoded)
+        console.log(decoded.role)
+
         localStorage.setItem('token', this.token)
         localStorage.setItem('userRole', this.userRole)
       } catch (error) {
