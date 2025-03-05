@@ -3,7 +3,6 @@
   <div class="container mt-5">
     <h2 class="mb-4">I tuoi Ticket</h2>
 
-    <!-- Bottone per aprire il form di creazione -->
     <button class="btn btn-primary mb-3" @click="showCreateModal = true">Crea Nuovo Ticket</button>
 
     <!-- Lista dei ticket -->
@@ -59,7 +58,6 @@ const tickets = ref([])
 const showCreateModal = ref(false)
 const newTicket = ref({ title: '', description: '' })
 
-// Carica i ticket dell'utente al caricamento della pagina
 const loadTickets = async () => {
   try {
     const response = await axios.get('/tickets', {
@@ -71,7 +69,6 @@ const loadTickets = async () => {
   }
 }
 
-// Crea un nuovo ticket
 const createTicket = async () => {
   try {
     await axios.post('/tickets', newTicket.value, {
@@ -79,13 +76,12 @@ const createTicket = async () => {
     })
     showCreateModal.value = false
     newTicket.value = { title: '', description: '' }
-    loadTickets() // Ricarica la lista dei ticket
+    loadTickets()
   } catch (error) {
     console.error('Errore nella creazione del ticket:', error)
   }
 }
 
-// Restituisce la classe per lo stato del ticket
 const getBadgeClass = (status) => {
   switch (status) {
     case 'OPEN':

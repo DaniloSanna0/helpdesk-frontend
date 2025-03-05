@@ -44,7 +44,6 @@ const handleLogin = async () => {
   try {
     await authStore.login(username.value, password.value)
 
-    // Dopo il login, controlla il ruolo e reindirizza di conseguenza
     if (authStore.userRole === 'ADMIN') {
       router.push('/admin')
     } else {

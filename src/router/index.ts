@@ -17,7 +17,6 @@ const router = createRouter({
   routes,
 })
 
-// Middleware per proteggere le rotte
 import { useAuthStore } from '../stores/auth'
 
 router.beforeEach((to, from, next) => {

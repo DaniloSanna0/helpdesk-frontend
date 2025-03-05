@@ -14,7 +14,6 @@ export const useAuthStore = defineStore('auth', {
         const response = await axios.post('/auth/login', { username, password })
         this.token = response.data.token
 
-        // Decodifica il token JWT per ottenere il ruolo
         const decoded = jwtDecode<{ role: string }>(this.token)
         this.userRole = decoded.role
 

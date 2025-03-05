@@ -47,7 +47,7 @@ const authStore = useAuthStore()
 const handleRegister = async () => {
   try {
     await axios.post('/auth/register', { username: username.value, password: password.value })
-    await authStore.login(username.value, password.value) // Login automatico dopo registrazione
+    await authStore.login(username.value, password.value)
     router.push('/dashboard')
   } catch {
     alert('Errore durante la registrazione. Riprova.')
