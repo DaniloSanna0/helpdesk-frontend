@@ -18,29 +18,13 @@
 Il sistema implementa un'autenticazione JWT con login e ruoli:
 
 Utente (USER): Può creare e visualizzare i propri ticket.
+
 Amministratore (ADMIN): Può vedere e gestire tutti i ticket.
 Al login, il token e il ruolo vengono salvati in localStorage per garantire persistenza.
-
-📚 Struttura del Progetto
-bash
-Copia
-Modifica
-/src
- ├── assets/        # File statici (CSS, immagini)
- ├── components/    # Componenti Vue riutilizzabili
- ├── pages/         # Pagine principali
- ├── router/        # Configurazione delle rotte Vue
- ├── stores/        # Pinia store per gestione stato globale
- ├── services/      # Chiamate API con Axios
- ├── App.vue        # Entry point dell'app
- ├── main.ts        # Inizializzazione Vue e dipendenze
 
  🔄 API Backend
 L'app comunica con un backend Spring Boot. Esempio di chiamata API:
 
-javascript
-Copia
-Modifica
 axios.get('/api/tickets', {
   headers: { Authorization: `Bearer ${token}` }
 })
