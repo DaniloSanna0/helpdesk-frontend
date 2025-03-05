@@ -14,19 +14,23 @@
 - **Bootstrap 5** (Stilizzazione)
 - **Vite** (Build Tool per prestazioni ottimali)
 
-🔐 Autenticazione e Ruoli
-Il sistema implementa un'autenticazione JWT con login e ruoli:
+## 🔐 Autenticazione e Ruoli
 
-Utente (USER): Può creare e visualizzare i propri ticket.
+Il sistema utilizza **JWT (JSON Web Token)** per autenticare gli utenti e gestire i ruoli.
 
-Amministratore (ADMIN): Può vedere e gestire tutti i ticket.
-Al login, il token e il ruolo vengono salvati in localStorage per garantire persistenza.
+- **Utente (USER)**: Può creare e visualizzare solo i propri ticket.
+- **Amministratore (ADMIN)**: Può visualizzare e gestire tutti i ticket.
 
- 🔄 API Backend
-L'app comunica con un backend Spring Boot. Esempio di chiamata API:
+## 📌 Persistenza del Token
+Dopo il login, il **token JWT** e il **ruolo** dell'utente vengono salvati in `localStorage` per mantenere l'autenticazione attiva anche dopo il refresh della pagina.
+
+## 🔄 API Backend
+L'applicazione comunica con un backend Spring Boot 3.4.3 tramite API REST.
+Esempio di chiamata API con axios per recuperare i ticket:
 
 axios.get('/api/tickets', {
-  headers: { Authorization: `Bearer ${token}` }
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
 })
   .then(response => console.log(response.data))
   .catch(error => console.error("Errore:", error));
+
