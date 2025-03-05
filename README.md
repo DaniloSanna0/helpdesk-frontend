@@ -1,39 +1,16 @@
-# helpdesk-frontend
+# 🔹 Caratteristiche principali
+- **Autenticazione e autorizzazione**: Login con JWT, ruoli utente (`USER` e `ADMIN`).
+- **Gestione dei ticket**: Gli utenti possono creare e visualizzare solo i propri ticket, mentre gli admin possono gestire tutti i ticket.
+- **Interfaccia moderna**: Layout responsive e componenti ottimizzati per un'esperienza fluida.
+- **Routing dinamico**: Accesso condizionale alle pagine in base al ruolo dell'utente.
+- **Gestione dello stato con Pinia**: Persistenza del token di autenticazione e dei dati dell'utente.
+- **Integrazione con API REST**: Comunicazione con il backend per operazioni CRUD sui ticket.
 
-This template should help get you started developing with Vue 3 in Vite.
+## 🎯 Tecnologie utilizzate
+- **Vue.js 3** (Composition API)
+- **Pinia** (State Management)
+- **Vue Router** (Gestione delle rotte)
+- **Axios** (Chiamate HTTP)
+- **Bootstrap 5** (Stilizzazione)
+- **Vite** (Build Tool per prestazioni ottimali)
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
